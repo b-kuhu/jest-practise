@@ -1,11 +1,11 @@
 import express from "express";
 import http from 'http';
-import getAllUsers from "./routes/getAllUsers";
 
 
+import animalController from "./routes/user.routes";
 
 const app = express();
 const server=new http.Server(app);
-server.listen(3002);
+server.listen(3000);
 
-app.get('/users/all',getAllUsers);
+app.get('/animals',animalController.getAnimal);

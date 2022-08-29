@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import getAllUsers from './getAllUsers';
+import getAllUsers from '../routes/getAllUsers';
 
 
 describe('Get All users request',()=>{
