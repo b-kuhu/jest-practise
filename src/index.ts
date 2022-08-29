@@ -1,11 +1,25 @@
-import express from "express";
-import http from 'http';
+import express from 'express';
+import 'reflect-metadata';
+import { myDataSource } from './appDataSource';
+import AnimalController from './routes/user.routes';
 
 
-import animalController from "./routes/user.routes";
+myDataSource.initialize()
+.then(()=>{
 
-const app = express();
-const server=new http.Server(app);
-server.listen(3000);
+ const app = express();
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
-app.get('/animals',animalController.getAnimal);
+// Routes
+
+app.get('/animals',AnimalController.getAnimal);
+
+const port =3000
+app.listen(port,()=>{
+    console.log(`app listening at ${port}`)
+    
+})
+}               )
+.catch((error)=>console.log(error));
