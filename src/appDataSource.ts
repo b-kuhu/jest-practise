@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm"
+import { Animal } from "./entities/animal.entity";
 
 export const myDataSource = new DataSource({
     type: "postgres",
@@ -7,7 +8,7 @@ export const myDataSource = new DataSource({
     username: "postgres",
     password: "Kuhub*28",
     database: "test",
-    entities: ["src/entities/*.ts"],
+    entities: [Animal],
     logging: true,
     synchronize: true,
 })

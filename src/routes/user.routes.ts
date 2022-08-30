@@ -13,7 +13,7 @@ class AnimalController {
     console.log(value);
     const animal = myDataSource.getRepository(Animal).create(newAnimal);
     const result = await myDataSource.getRepository(Animal).save(animal);
-    return res.json(result);
+    return res.status(200).json({result,message:"animal created"});
   };
   static getAnimal = async (req: Request, res: Response) => {
     const result = await myDataSource.getRepository(Animal).find();
