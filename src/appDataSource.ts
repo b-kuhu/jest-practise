@@ -10,6 +10,6 @@ export const myDataSource = new DataSource({
     database: "test",
     entities: [Animal],
     logging: true,
-    synchronize: true,
+    synchronize: true
 })
 console.log('Database connected');

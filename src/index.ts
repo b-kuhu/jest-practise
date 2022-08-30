@@ -1,5 +1,4 @@
-import express from 'express';
-import 'reflect-metadata';
+
 import { myDataSource } from './appDataSource';
 import app from './app';
 

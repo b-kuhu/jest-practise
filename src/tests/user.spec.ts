@@ -1,20 +1,28 @@
-import { Request,Response } from "express";
 import request from "supertest";
-
-
 import app from '../app';
+// import {Animal} from '../entities/animal.entity';
+// import {myDataSource} from '../appDataSource';
 
 
-describe("GET /animals",()=>{  
+
+
+describe("POST /animals",()=>{  
     
-    jest.setTimeout(10000);
-     it("returns 200 if animal is created",async()=>{
+    jest.setTimeout(2000);
+    //  test("returns 200 if animal is created",async()=>{
      
-        const res =  await request(app).post('/animals').send({name:"tommy",breed:"dog2"});
+    //     const res =  await request(app).post('/animals').send({name:"tommy",breed:"dog2"});
       
-        expect(res.statusCode).toEqual(200);
+    //     expect(res.statusCode).toEqual(200);
        
+    // })
+    it("get Animals",async()=>{
+        const res =  await request(app).get('/animals').send();
+        expect(res.statusCode).toBe(200);
     })
+    // test("get sum",()=>{
+    //     expect(2+3).toBe(5);
+    // })
 })
 
 

@@ -1,9 +1,9 @@
 {
-  "exclude": ["**/*.spec.ts"],
+  "exclude": [],
 
   "compilerOptions": {
-    "lib":["es5","es6"],
-    "target": "ES5",
+    "lib":["ES5","ES6"],
+    "target": "ES6",
     "module": "CommonJS",
     "outDir": "./dist",
     "strict": true,
@@ -16,6 +16,5 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "strictPropertyInitialization": false
-
   }
 }
