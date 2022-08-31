@@ -10,6 +10,8 @@ export const myDataSource = new DataSource({
     database: "test",
     entities: [Animal],
     logging: true,
-    synchronize: true
+    synchronize: true,
+    dropSchema:true,
+    migrationsRun:true
 })
 console.log('Database connected');

@@ -4,6 +4,19 @@ import {myDataSource} from '../appDataSource';
 import {animalSchema} from '../validationSchema';
 
 class AnimalController {
+  static getAllUsers =async (req:Request,res:Response) => {
+    const users = [
+      {
+          name:'John',
+          age:30
+      },
+      {
+          name:'Peter',
+          age:40
+      }
+  ];
+   res.statusCode=200;
+  }
   static createAnimal = async (req: Request, res: Response) => {
     const newAnimal = {
       name: req.body.name,

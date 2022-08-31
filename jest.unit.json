@@ -5,7 +5,6 @@
  
     "testMatch":[
         "**/**/tests/*.(spec).ts"
-    ],
-    "resetMocks":true,
-    "clearMocks":true
+    ]
+    
  }
