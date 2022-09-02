@@ -10,5 +10,5 @@ app.listen(port,()=>{
     console.log(`app listening at ${port}`)
     
 })
-}               )
+})
 .catch((error)=>console.log(error));

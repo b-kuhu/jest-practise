@@ -1,4 +1,4 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, { Application} from "express";
 
 import 'reflect-metadata';
 import  indexRoutes from "./routes/animal.routes";
@@ -10,6 +10,6 @@ const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.use(indexRoutes);
+app.use('/',indexRoutes);
 
 export default app;

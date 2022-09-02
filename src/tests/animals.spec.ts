@@ -1,31 +1,41 @@
 import request from "supertest";
-import app from '../app';
+import app from "../app";
 import typeORM from "typeorm";
 import { myDataSource } from "../appDataSource";
 import { Server } from "http";
-import {describe,it, expect, test} from '@jest/globals';
 
+let server: Server;
+beforeEach(async () => {
+  myDataSource.initialize().then(() => {
+    const port = 3000;
+    app.listen(port, () => {
+      console.log(`app listening at ${port}`);
+    });
+  });
 
-let connection:typeORM.DataSource,server:Server;
-beforeEach(async()=>{
-   connection = await myDataSource.initialize();
-    await connection.synchronize();
-    server = app.listen(3000);
-   
+  await myDataSource.synchronize();
+
+  console.log("app listening at port 3000");
 });
 
-afterEach(async()=>{
-    connection.destroy();
-    server.close();
-    
-})
-describe("my component",()=>{
-    it("should be no users intitially",async()=>{
-   const response = await request(app).get('/animals');
-   console.log(response.body);
-}),
-30000;
-})
+
+// describe("my component",()=>{
+
+it("should be no users intitially", async () => {
+  try {
+    const response = await request(app).get("/animals");
+    console.log(response.body);
+  } catch (error) {
+    console.log(error);
+  }
+});
+afterEach((done) => {
+  myDataSource.destroy();
+  server.close();
+  done();
+});
+
+// })
 
 // describe("GET /animals", () => {
 //     const newAnimal = {
@@ -50,15 +60,15 @@ describe("my component",()=>{
 //       expect(response.body.data.length >= 1).toBe(true);
 //     });
 //   });
-// describe("endpoints /animals",()=>{  
-    
+// describe("endpoints /animals",()=>{
+
 //     jest.setTimeout(2000);
 //      test("returns 200 if animal is created",async()=>{
-     
+
 //         const res =  await request(app).post('/animals').send({name:"tommy",breed:"dog2"});
-      
+
 //         expect(res.statusCode).toEqual(200);
-       
+
 //     })
 //     it("get Animals",async()=>{
 //         const res =  await request(app).get('/animals').send();
@@ -68,8 +78,6 @@ describe("my component",()=>{
 //     //     expect(2+3).toBe(5);
 //     // })
 // })
-
-
 
 // describe('Get All users request',()=>{
 //     let mockRequest :Partial<Request>;
@@ -102,6 +110,6 @@ describe("my component",()=>{
 
 //       users.getAllUsers(mockRequest as Request, mockResponse as Response);
 //         expect(mockResponse.statusCode).toBe(expectedStatusCode);
-        
+
 //     });
 // });
